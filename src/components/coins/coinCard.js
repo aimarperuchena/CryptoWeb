@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import lineChart from '../../assets/img/lineChart.png';
 import Avatar from '@material-ui/core/Avatar';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 200,
