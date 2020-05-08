@@ -58,11 +58,11 @@ export default function CoinCard(props) {
           </Typography>
 
           {coin.price_change_percentage_24h > 0 ? (
-            <Typography variant="h7" component="h4" className={classes.green}>
+            <Typography variant="h6" component="h6" className={classes.green}>
               {coin.price_change_percentage_24h.toFixed(2)} %
             </Typography>
           ) : (
-            <Typography variant="h7" component="h4" className={classes.red}>
+            <Typography variant="h6" component="h6" className={classes.red}>
               {coin.price_change_percentage_24h.toFixed(2)} %
             </Typography>
           )}

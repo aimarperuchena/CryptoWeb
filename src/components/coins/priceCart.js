@@ -5,11 +5,18 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
+import {
+  ArgumentAxis,
+  ValueAxis,
+  Chart,
+  LineSeries,
+} from '@devexpress/dx-react-chart-material-ui';
 const useStyles = makeStyles({
   root: {
-    
     borderColor: 'black',
-    border: '1px black solid'
+    border: '1px black solid',
+    margin: 5,
   },
   title: {
     fontSize: 14,
@@ -21,32 +28,38 @@ const useStyles = makeStyles({
 export default function HomeView(props) {
   const coin = props.coin;
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
+
+  const renderChart = () => {
+    if (coin.name !== undefined) {
+      console.log(coin.sparkline_in_7d.price);
+      
+      return (
+        <Card className={classes.root}>
+          <CardContent>
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
+            >
+              {coin.name}
+            </Typography>
+            <Paper>
+              <Chart data={coin.sparkline_in_7d.price}>
+                <ArgumentAxis />
+                <ValueAxis />
+
+                {/* <LineSeries valueField="y" argumentField="x" /> */}
+              </Chart>
+            </Paper>
+          </CardContent>
+        </Card>
+      );
+    }
+  };
   return (
-    <Card className={classes.root}>
-      <CardContent>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          {coin.name}
-        </Typography>
-        <Typography variant="h5" component="h2">
-          be{bull}nev{bull}o{bull}lent
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+    <div>
+      {renderChart()}
+      <p>Hola</p>
+    </div>
   );
 }

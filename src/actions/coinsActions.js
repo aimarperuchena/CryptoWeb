@@ -41,6 +41,7 @@ const getCoinsFail = () => ({
 export function showCoin(coin, chartDays) {
   return (dispatch) => {
     dispatch(showCoinDispatch(coin));
+    
   };
 }
 

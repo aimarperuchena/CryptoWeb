@@ -15,12 +15,12 @@ export const CoinsView = ({ deviceType }) => {
   }, []);
 
   const coins = useSelector((state) => state.coins.coins);
-  const chartDays = useSelector((state) => state.coins.chart_days);
+  var chartDays = useSelector((state) => state.coins.chart_days);
   console.log(coins);
-  const cardClickHandler = (coin, chartDays) => {
-    const showCoinDispatch = (coin, chartDays) =>
-      dispatch(showCoin(coin, chartDays));
-    showCoinDispatch(coin, chartDays);
+  const cardClickHandler = (coin) => {
+    const showCoinDispatch = (coin) =>
+      dispatch(showCoin(coin));
+    showCoinDispatch(coin);
     /* alert(coin.name); */
   };
   let coin = useSelector((state) => state.coins.coin);
@@ -38,7 +38,7 @@ export const CoinsView = ({ deviceType }) => {
       </div>
 
       <Row>
-        <Col><PriceChart coin={coin} /></Col>
+        <Col><PriceChart coin={coin} days={chartDays} /></Col>
         <Col>
           <h1>Coin Info</h1>
         </Col>
