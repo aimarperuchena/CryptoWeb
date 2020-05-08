@@ -1,8 +1,7 @@
 import React from 'react';
-import App from './App';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './components/home/homeView';
-import Prices from './components/cryptocurrency/cryptocurrencyView';
+import Coins from './components/coins/coinsView';
 import Sidebar from './components/sidebar/sidebarView';
 import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
@@ -32,8 +31,8 @@ export default function Routes() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/cryptocurrency">
-              <Prices />
+            <Route path="/coins">
+              <Coins />
             </Route>
           </Switch>
         </div>

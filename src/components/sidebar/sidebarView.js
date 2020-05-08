@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import AvatarImage from '../../assets/img/avatar.jpg';
-import { Divider } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -57,12 +56,12 @@ export default function SidebarView() {
             <ListItemText className={classes.listText} primary="Home" />
           </ListItem>
         </Link>
-        <Link to="/cryptocurrency" style={{ textDecoration: 'none' }}>
+        <Link to="/coins" style={{ textDecoration: 'none' }}>
           <ListItem button className={classes.listItem}>
             <ListItemIcon>
               <AssessmentIcon style={{ color: 'white' }} />
             </ListItemIcon>
-            <ListItemText className={classes.listText} primary="Crypto Prices" />
+            <ListItemText className={classes.listText} primary="Coins" />
           </ListItem>
         </Link>
       </List>
