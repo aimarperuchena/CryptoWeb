@@ -1,40 +1,55 @@
 import React, { useEffect } from 'react';
-import { readCoins } from '../../actions/coinsActions';
+import { getCoins, showCoin } from '../../actions/coinsActions';
 import { useDispatch, useSelector } from 'react-redux';
 import CoinCard from './coinCard';
 import { makeStyles } from '@material-ui/core/styles';
 import { Row, Col, Container } from 'react-bootstrap';
-import Carousel from 'react-bootstrap/Carousel';
-export const CoinsView = () => {
+
+export const CoinsView = ({ deviceType }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   useEffect(() => {
-    const loadCoins = () => dispatch(readCoins());
+    const loadCoins = () => dispatch(getCoins());
     loadCoins();
   }, []);
 
   const coins = useSelector((state) => state.coins.coins);
   console.log(coins);
   const cardClickHandler = (coin) => {
-    alert(coin.name);
+    const showCoinDispatch = (coin) => dispatch(showCoin(coin));
+    showCoinDispatch(coin);
+
+    /* alert(coin.name); */
   };
   return (
-    <Container className={classes.mainContainer}>
-      <Row>
+    <div>
+      <div></div>
+      <div className={classes.row}>
         {coins.length === 0
           ? 'Cargando'
           : coins.map((coin) => (
               <CoinCard coin={coin} onClickHandler={cardClickHandler} />
             ))}
-      </Row>
-    </Container>
+      </div>
+      <Container className={classes.mainContainer}>
+        <Row>
+          <Col>
+            <h1>PRICE CHART</h1>
+          </Col>
+          <Col>
+            <h1>Coin Info</h1>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 
 const useStyles = makeStyles({
-  mainContainer: {
-    margin: 0,
-    paddingRight: 0,
+  coinRow: {
+    marginRight: 10,
+
+    width: '100%',
   },
 
   row: {

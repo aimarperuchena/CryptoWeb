@@ -2,3 +2,4 @@ export const READ_COINS = 'READ_COINS';
 export const READ_COINS_START='READ_COINS_START';
 export const READ_COINS_SUCCESS = 'READ_COINS_SUCCESS';
 export const READ_COINS_FAIL = 'READ_COINS_FAIL';
+export const SHOW_COIN='SHOW_COIN';

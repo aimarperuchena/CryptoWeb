@@ -31,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
   },
   coinImg: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
+    width: theme.spacing(10),
+    height: theme.spacing(10),
     margin: 10,
   },
   green: {
@@ -68,7 +68,6 @@ export default function CoinCard(props) {
           )}
         </div>
 
-        <img src={lineChart} alt="linechart" className={classes.lineChart} />
         <div className={classes.cardRow}>
           <Typography>{coin.name}</Typography>
 
