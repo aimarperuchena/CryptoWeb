@@ -3,6 +3,9 @@ import {
   READ_COINS_SUCCESS,
   READ_COINS_START,
   SHOW_COIN,
+  SHOW_COIN_CHART_START,
+  SHOW_COIN_CHART_SUCCESS,
+  SHOW_COIN_CHART_FAIL,
 } from '../reducers/types';
 import clienteAxios from '../config/axios';
 
@@ -35,14 +38,28 @@ const getCoinsFail = () => ({
   payload: true,
 });
 
-export function showCoin(coin) {
-  alert('hola');
-  return  (dispatch) => {
-    dispatch(showCoinDispatch(coin))
+export function showCoin(coin, chartDays) {
+  return (dispatch) => {
+    dispatch(showCoinDispatch(coin));
   };
 }
 
 const showCoinDispatch = (coin) => ({
   type: SHOW_COIN,
   payload: coin,
+});
+
+const showCoinChartStart = () => ({
+  type: SHOW_COIN_CHART_START,
+  payload: true,
+});
+
+const showCoinChartSuccess = (data) => ({
+  type: SHOW_COIN_CHART_SUCCESS,
+  payload: data,
+});
+
+const showCoinChartFail = () => ({
+  type: SHOW_COIN_CHART_FAIL,
+  payload: true,
 });
