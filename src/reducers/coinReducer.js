@@ -40,8 +40,7 @@ export default function (state = initialState, action) {
         error: action.payload,
       };
     case SHOW_COIN:
-      console.log('reducer SHOW_COIN_INFO');
-      return {
+        return {
         ...state,
         coin: action.payload,
       };

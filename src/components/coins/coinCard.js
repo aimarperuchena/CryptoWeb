@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CoinCard(props) {
   const coin = props.coin;
+  const chartDays=props.chartDays;
   const classes = useStyles();
   const cardClick = () => {
     props.onClickHandler(coin);

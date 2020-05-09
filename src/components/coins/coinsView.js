@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { getCoins, showCoin } from '../../actions/coinsActions';
 import { useDispatch, useSelector } from 'react-redux';
 import CoinCard from './coinCard';
@@ -7,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Row, Col, Container } from 'react-bootstrap';
 
 export const CoinsView = ({ deviceType }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
   useEffect(() => {
@@ -15,20 +18,17 @@ export const CoinsView = ({ deviceType }) => {
   }, []);
 
   const coins = useSelector((state) => state.coins.coins);
-  var chartDays = useSelector((state) => state.coins.chart_days);
-  console.log(coins);
-  const cardClickHandler = (coin) => {
-    const showCoinDispatch = (coin) =>
-      dispatch(showCoin(coin));
-    showCoinDispatch(coin);
-    /* alert(coin.name); */
-  };
-  let coin = useSelector((state) => state.coins.coin);
+  
  
+  const cardClickHandler = (coin) => {
+    const showCoinDispatch = (coin) => dispatch(showCoin(coin));
+    showCoinDispatch(coin);
+    history.push("/coin/"+coin.id);
+  };
+
 
   return (
     <div>
-      <div></div>
       <div className={classes.row}>
         {coins === null
           ? 'Cargando'
@@ -36,13 +36,6 @@ export const CoinsView = ({ deviceType }) => {
               <CoinCard coin={coin} onClickHandler={cardClickHandler} />
             ))}
       </div>
-
-      <Row>
-        <Col><PriceChart coin={coin} days={chartDays} /></Col>
-        <Col>
-          <h1>Coin Info</h1>
-        </Col>
-      </Row>
     </div>
   );
 };
@@ -57,6 +50,7 @@ const useStyles = makeStyles({
   row: {
     display: 'flex',
     flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   chartsColumn: {
     display: 'flex',
