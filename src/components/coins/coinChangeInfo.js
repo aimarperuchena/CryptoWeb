@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
   greenChange: {
     backgroundColor: '#8AFF9D',
-    color: 'green',
+
     display: 'flex',
     flexDirection: 'row',
     borderRadius: 20,
@@ -32,12 +32,16 @@ const useStyles = makeStyles((theme) => ({
     MozBoxShadow: '0px 0px 22px -5px rgba(209,190,209,1)',
     boxShadow: '0px 0px 22px -5px rgba(209,190,209,1)',
     justifyContent: 'space-between',
-    padding: 10,
+    alignItems: 'center',
+    alignSelf: 'center',
+    alignContent:'center',
+    padding: 5,
     width: 110,
+    margin: 10,
   },
   redChange: {
     backgroundColor: '#FF8F8A',
-    color: 'red',
+
     display: 'flex',
     flexDirection: 'row',
     borderRadius: 20,
@@ -45,8 +49,9 @@ const useStyles = makeStyles((theme) => ({
     MozBoxShadow: '0px 0px 22px -5px rgba(209,190,209,1)',
     boxShadow: '0px 0px 22px -5px rgba(209,190,209,1)',
     justifyContent: 'space-between',
-    padding: 10,
+    padding: 5,
     width: 110,
+    margin: 5,
   },
 }));
 
