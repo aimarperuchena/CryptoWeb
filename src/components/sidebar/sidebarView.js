@@ -11,8 +11,8 @@ import AssessmentIcon from '@material-ui/icons/Assessment';
 import AvatarImage from '../../assets/img/avatar.jpg';
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
-    maxWidth: 200,
+    width: '10vw',
+    
     height: '100vh',
 
     backgroundColor: '#0F0C29',

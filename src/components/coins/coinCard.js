@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 200,
     margin: 5,
+    cursor: 'pointer',
   },
 
   title: {
@@ -45,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CoinCard(props) {
   const coin = props.coin;
-  const chartDays=props.chartDays;
+  const chartDays = props.chartDays;
   const classes = useStyles();
   const cardClick = () => {
     props.onClickHandler(coin);

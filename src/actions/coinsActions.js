@@ -49,19 +49,15 @@ const showCoinDispatch = (coin) => ({
   payload: coin,
 });
 
-export function showCoinChart(coin, days) {
+export function showCoinChart(coin) {
   return async (dispatch) => {
-    console.log('COIN IDDDDDDDDDDDDDDDDDDDDD: ' + coin);
-    console.log('DAYSSSSSSSSSSSSSSSSSSSSSSS: ' + days);
     dispatch(showCoinChartStart());
-
-    let link = `/coins/${coin}/market_chart?vs_currency=eur&days=${days}`;
     try {
-      const response = await clienteAxios.get(link);
-      dispatch(showCoinChartSuccess(response.data));
-    } catch (error) {
-      console.log(error);
-      console.log(link);
+      const response = await clienteAxios.get(
+        `/coins/${coin}/market_chart?vs_currency=eur&days=1`,
+      );
+      dispatch(showCoinChartSuccess(response));
+    } catch (err) {
       dispatch(showCoinChartFail());
     }
   };

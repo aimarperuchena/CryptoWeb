@@ -40,7 +40,7 @@ export default function (state = initialState, action) {
         error: action.payload,
       };
     case SHOW_COIN:
-        return {
+      return {
         ...state,
         coin: action.payload,
       };

@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { getCoins, showCoin } from '../../actions/coinsActions';
 import { useDispatch, useSelector } from 'react-redux';
 import CoinCard from './coinCard';
-import PriceChart from './priceCart';
+
 import { makeStyles } from '@material-ui/core/styles';
 import { Row, Col, Container } from 'react-bootstrap';
 
@@ -18,17 +18,15 @@ export const CoinsView = ({ deviceType }) => {
   }, []);
 
   const coins = useSelector((state) => state.coins.coins);
-  
- 
+
   const cardClickHandler = (coin) => {
     const showCoinDispatch = (coin) => dispatch(showCoin(coin));
     showCoinDispatch(coin);
-    history.push("/coin/"+coin.id);
+    history.push('/coin/' + coin.id);
   };
 
-
   return (
-    <div>
+    <div className={classes.root}>
       <div className={classes.row}>
         {coins === null
           ? 'Cargando'
@@ -41,6 +39,9 @@ export const CoinsView = ({ deviceType }) => {
 };
 
 const useStyles = makeStyles({
+  root: {
+    width: '90vw',
+  },
   coinRow: {
     marginRight: 10,
 
