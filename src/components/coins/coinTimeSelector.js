@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     MozBoxShadow: '0px 0px 22px -5px rgba(209,190,209,1)',
     boxShadow: '0px 0px 22px -5px rgba(209,190,209,1)',
     height: 60,
-    width: '30%',
+    width: '60%',
     marginRight: 10,
     display: 'flex',
     flexDirection: 'row',
@@ -35,8 +35,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CoinChange(props) {
-  const coin = props.coin;
+export default function TimeSelector(props) {
+  
 
   const classes = useStyles();
   const ClickHandler = (time) => {

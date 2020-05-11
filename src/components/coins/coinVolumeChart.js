@@ -1,18 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from 'react-bootstrap/Card';
+
 import { time_format } from '../../functions/timeFunctions';
 import {
-  LineChart,
-  Line,
   ResponsiveContainer,
   AreaChart,
   XAxis,
   YAxis,
   Legend,
-  CartesianAxis,
   Tooltip,
-  ReferenceLine,
   Area,
   CartesianGrid,
 } from 'recharts';
@@ -24,31 +20,33 @@ const useStyles = makeStyles((theme) => ({
     margin: 5,
     paddingRight: 20,
     width: '100%',
-    
   },
 }));
 
 export default function VolumeChart(props) {
   const classes = useStyles();
   const data = props.data.total_volumes;
-  console.log(data);
   let prices = [];
   let days = props.days;
 
   const chartDataPreparation = () => {
     try {
-      for (let i = 0; i < data.length; i++) {
-        var myDate = new Date(data[i][0]);
-        if (days > 1) {
-          let time = myDate.toLocaleString();
-          console.log('asdasdasdasdasdasdasd' + myDate.toLocaleString);
+      if (days > 1) {
+        for (let i = 0; i < data.length; i++) {
+          var myDate = new Date(data[i][0]);
+
+          let time = myDate.toLocaleDateString();
           prices.push({ time: time, volume: data[i][1] / 1000000 });
-        } else {
-          let time = time_format(myDate);
+        }
+      } else {
+        for (let i = 0; i < data.length; i++) {
+          var myDate2 = new Date(data[i][0]);
+          let time = time_format(myDate2);
 
           prices.push({ time: time, volume: data[i][1] / 1000000 });
         }
       }
+
       return (
         <ResponsiveContainer width="100%" height="80%">
           <AreaChart data={prices}>
