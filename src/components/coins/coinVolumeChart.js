@@ -51,7 +51,7 @@ export default function VolumeChart(props) {
         <ResponsiveContainer width="100%" height="80%">
           <AreaChart data={prices}>
             <XAxis dataKey="time" />
-            <YAxis />
+            <YAxis type="number" domain={['auto', 'auto']} />
             <CartesianGrid strokeDasharray="3 3" />
             <Tooltip cursor={{ stroke: 'red', strokeWidth: 2 }} />
             <Legend verticalAlign="top" height={36} />

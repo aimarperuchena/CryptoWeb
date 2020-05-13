@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+    marginBottom: 5,
   },
   button: {
     border: '1px solid black',
@@ -36,11 +37,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function TimeSelector(props) {
-  
-
   const classes = useStyles();
   const ClickHandler = (time) => {
-    
     props.onClick(time);
   };
   const renderButton = (time, title) => {
@@ -56,8 +54,7 @@ export default function TimeSelector(props) {
       {renderButton(7, '7D')}
       {renderButton(30, '1M')}
       {renderButton(180, '6M')}
-      {renderButton(300, '12M')}
-      {renderButton('max', 'MAX')}
+      {renderButton(365, '1Y')}
     </Card>
   );
 }

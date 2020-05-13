@@ -29,32 +29,32 @@ export default function PriceChart(props) {
   let days = props.days;
 
   const chartDataPreparation = () => {
-    let min=1000000;
-    let max=0;
+    let min = 1000000;
+    let max = 0;
     try {
       for (let i = 0; i < data.length; i++) {
         var myDate = new Date(data[i][0]);
         if (days > 1) {
           let time = myDate.toLocaleDateString();
-          if(data[i][1]>max){
-            max=data[i][1];
+          if (data[i][1] > max) {
+            max = data[i][1];
           }
-          if(data[i][1]<min){
-            min=data[i][1];
+          if (data[i][1] < min) {
+            min = data[i][1];
           }
           prices.push({ time: time, price: data[i][1] });
         } else {
           let time = time_format(myDate);
-          if(data[i][1]>max){
-            max=data[i][1];
+          if (data[i][1] > max) {
+            max = data[i][1];
           }
-          if(data[i][1]<min){
-            min=data[i][1];
+          if (data[i][1] < min) {
+            min = data[i][1];
           }
           prices.push({ time: time, price: data[i][1] });
         }
       }
-     /*  console.log('MAX: '+max+' MAX SUBIDO: '+max*1.1); */
+      /*  console.log('MAX: '+max+' MAX SUBIDO: '+max*1.1); */
       return (
         <ResponsiveContainer width="100%" height="80%">
           <AreaChart data={prices}>

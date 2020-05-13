@@ -91,7 +91,7 @@ export default function CoinDetailView() {
         </Card>
       </Col>
       <Col xs={12} xl={3} sm={12} className={classes.col2}>
-        <CoinInfo />
+        <CoinInfo coin={coinInfo} />
         <CoinChangeInfo />
       </Col>
     </div>
