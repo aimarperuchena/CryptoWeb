@@ -1,10 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
 import Avatar from '@material-ui/core/Avatar';
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,13 +61,12 @@ export default function CoinInfo(props) {
   const classes = useStyles();
   console.log(props);
   let coin = useSelector((state) => state.coins.coin);
-  let coinSymbol;
   try {
-    coinSymbol = coin.symbol.toUpperCase();
+    coin.symbol.toUpperCase();
   } catch {
     history.push('/coins');
   }
-  const marketCap = (coin.market_cap / 1000000).toFixed(2);
+
   const formater = (value) => {
     try {
       if (value > 1000000) {
@@ -76,6 +74,13 @@ export default function CoinInfo(props) {
       }
       return value.toFixed(2);
     } catch (err) {}
+  };
+
+  const formatPrice = (value) => {
+    if (value > 1) {
+      return value.toFixed(2);
+    }
+    return value.toFixed(5);
   };
   const renderObject = (title, data, text, value) => {
     if (value > 0) {
@@ -135,13 +140,17 @@ export default function CoinInfo(props) {
       </div>
 
       <div className={classes.row}>
-        {renderObject('24H MAX ', formater(coin.high_24h), '€', coin.high_24h)}
+        {renderObject('24H MAX ', coin.high_24h, '€', coin.high_24h)}
       </div>
       <div className={classes.row}>
-        {renderObject('24H MIN ', formater(coin.low_24h), '€', -coin.low_24h)}
+        {renderObject('24H MIN ', coin.low_24h, '€', -coin.low_24h)}
       </div>
       <div className={classes.row}>
-        {renderObject('24H MAX/MIN ', formater(coin.high_24h-coin.low_24h), '€')}
+        {renderObject(
+          '24H MAX/MIN ',
+          formatPrice(coin.high_24h - coin.low_24h),
+          '€',
+        )}
       </div>
     </Card>
   );

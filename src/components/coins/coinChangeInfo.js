@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from 'react-bootstrap/Card';
 import { useSelector } from 'react-redux';
-import Col from 'react-bootstrap/Col';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',

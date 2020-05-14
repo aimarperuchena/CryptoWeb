@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CoinCard from './coinCard';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Row, Col, Container } from 'react-bootstrap';
+
 
 export const CoinsView = ({ deviceType }) => {
   const history = useHistory();
